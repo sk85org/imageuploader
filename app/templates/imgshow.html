@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id=info>
+    <h3>Uploaded Data</h3>
+    {{result.date}}
+    <h3>Object Id</h3>
+    {{result._id}}
+    <h3>File Name</h3>
+    {{result.filename}}
+    <h3>File Preview</h3>
+    <img src="/imaginary/resize?width=200&file={{result.filename}}"><br>
+    <a href="/imgshow/{{result.filename}}">show original file </a>
+    <h3>JSON</h3>
+    <blockquote>
+        {{result}}
+    </blockquote>
+</div>
+
+<br>
+<div id="app"><a v-on:click="click" href="">Delete: {{ result._id}}</a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data: {
+            imageArray: [],
+            view: true
+        },
+        methods: {
+            click: function (e) {
+                e.preventDefault();
+                res = confirm("Do you delete {{ result.filename}} ?")
+
+                if (res == true) {
+                    location.href = "/del/{{result._id}}";
+                } else {
+                    alert("cancelled")
+
+                }
+
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="app">
+    <h3>Search by Filename</h3>
+    <input v-model="query" type="text" size="50px" v-on:keyup.enter="search">
+    <input type="button" value="Search" v-on:click="search">
+    <ul>
+        <li v-for="item in items">
+            <a v-bind:href="'/list/id/'+item._id">[[ item.filename ]]</a></li>
+    </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data: {
+            query: "",
+            items: [],
+        },
+        methods: {
+            search: function (e) {
+                axios
+                    .get('/search_file?query=' + this.query)
+                    .then(function (res) {
+                        vm.items = res.data.result;
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
+            }
+        }
+    });
+</script>
+{% endblock %}

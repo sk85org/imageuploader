@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="{{url_for('index')}}">Home</a> /
+            <a href="{{url_for('upload')}}">Upload</a> /
+            <a href="{{url_for('list')}}">List</a> /
+            <a href="{{url_for('search')}}">Search</a>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

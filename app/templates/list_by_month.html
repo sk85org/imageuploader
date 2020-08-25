@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<a href="/list/date/{{year}}">Back to {{year}}</a>
+<h2>Photo of {{year}}-{{month}}</h2>
+<h3>Days</h3>
+{% for day in range(1,32) %}
+<a href="/list/date/{{year}}/{{month}}/{{day}}">{{day}}</a> /
+{% endfor %}
+<h3>List</h3>
+{% for i in result %}
+<li><a href="/list/id/{{i._id}}">{{i.date}}</a></li>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Year</h3>
+<a href="/list/date/{{this_year-11}}">
+    <<</a> {% for year in range(this_year-10,this_year+1) %} <a href="/list/date/{{year}}">
+        {{year}}
+</a> /
+
+{% endfor %}
+<h3>All posts</h3>
+<a href="/list/allposts">all posts</a>
+{% endblock %}

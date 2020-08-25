@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>All posts</h3>
+{% for i in result %}
+<li><a href="/list/id/{{ i._id}}">{{ i.date}}</a></li>
+
+{% endfor %}
+
+{% endblock %}

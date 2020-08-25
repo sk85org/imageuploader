@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for i in files_info %}
+<li><a href="list/id/{{ i._id}}">{{ i.date}}</a></li>
+
+{% endfor %}
+{% endblock %}

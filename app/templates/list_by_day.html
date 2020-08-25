@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<a href="/list/date/{{year}}/{{month}}">Back to {{year}}-{{month}}</a>
+<h2>Photo of {{year}}-{{month}}-{{day}}</h2>
+
+<h3>List</h3>
+{% for member in result %}
+<li><a href="/list/id/{{ member._id}}">{{ member.date}}</a></li>
+
+{% endfor %}
+
+{% endblock %}
