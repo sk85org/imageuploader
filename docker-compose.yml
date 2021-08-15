@@ -21,8 +21,9 @@ services:
       - ./db:/data/db
   imaginary:
     image: h2non/imaginary:latest
+    restart: always
     volumes:
-    - ./img:/img
+      - ./img:/img
     environment:
       PORT: 9000
     command: -disable-endpoints form,health -mount /img  -enable-url-source -allowed-origins http://localhost
