@@ -3,7 +3,7 @@
 server {
     listen       80;
     listen  [::]:80;
-    server_name  xef2.net;
+    server_name  example.net;
 
     #charset koi8-r;
     #access_log  /var/log/nginx/host.access.log  main;

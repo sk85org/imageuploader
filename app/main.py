@@ -67,8 +67,10 @@ def upload_file():
             # print(result.inserted_id)
             files_info.append(post)
         # print(names)
-        return render_template("upload_result.html", files_info=files_info)
 
+        if request.form.get('cli')=="true":
+            return jsonify({'filename': files_info[0]['filename'], '_id': str(files_info[0]['_id'])})
+        return render_template("upload_result.html", files_info=files_info)
 
 @app.route("/list")
 def list():
@@ -126,7 +128,7 @@ def delete(id):
         result = collection.find_one({"_id": ObjectId(id)})
         filename = result["filename"]
         os.remove(imgpath(filename))
-        result = collection.remove({"_id": ObjectId(id)})
+        result = collection.delete_one({"_id": ObjectId(id)})
         return render_template("delete.html", id=id)
 
 
